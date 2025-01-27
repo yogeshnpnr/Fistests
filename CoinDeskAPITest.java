@@ -5,15 +5,15 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-
 public class CoinDeskAPITest {
 
     @Test
     public void testGetBitcoinPriceIndex() {
-        // Base URI of the API
+        
+    	
         RestAssured.baseURI = "https://api.coindesk.com/v1/bpi/currentprice.json";
 
-        // Send GET request and capture the response
+        //  GET request and  the response
         Response response = given()
                 .when()
                 .get()
@@ -22,7 +22,7 @@ public class CoinDeskAPITest {
                 .extract()
                 .response();
 
-        // Parse and validate response
+        // Parsing and validating the response
         String responseBody = response.getBody().asString();
 
         // Verify there are 3 BPIs: USD, GBP, EUR
@@ -33,4 +33,3 @@ public class CoinDeskAPITest {
         assertThat(gbpDescription, equalTo("British Pound Sterling"));
     }
 }
-
